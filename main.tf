@@ -14,7 +14,7 @@ provider "aws" {
 module "fsxn" {
   source = "./modules/fsxn"
 
-  project_name       = var.project_name
+  project_prefix     = var.project_prefix
   region             = var.region
   vpc_id             = var.vpc_id
   vpc_cidr_block     = var.vpc_cidr_block

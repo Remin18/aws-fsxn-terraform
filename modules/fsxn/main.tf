@@ -1,5 +1,5 @@
 resource "aws_security_group" "nfs_sg" {
-  name   = "${var.project_name}-nfs-sg"
+  name   = "${var.project_prefix}-nfs-sg"
   vpc_id = var.vpc_id
 
   ingress {
@@ -27,7 +27,7 @@ resource "aws_fsx_ontap_file_system" "file_system" {
   fsx_admin_password  = var.fsx_admin_password
 
   tags = {
-    Name = "${var.project_name}-fsxn"
+    Name = "${var.project_prefix}-fsxn"
   }
 
   timeouts {
@@ -38,7 +38,7 @@ resource "aws_fsx_ontap_file_system" "file_system" {
 
 resource "aws_fsx_ontap_storage_virtual_machine" "svm" {
   file_system_id = aws_fsx_ontap_file_system.file_system.id
-  name           = "${var.project_name}-svm"
+  name           = "${var.project_prefix}-svm"
 }
 
 resource "aws_fsx_ontap_volume" "volume" {
